@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     name: Python 3.12 - Ubuntu - x64
     timeout-minutes: 720
 
