@@ -10,7 +10,4 @@ RUN apt-get update && apt-get install -y git curl gnupg ca-certificates && \
     apt-get install -y nodejs && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install Git inside the container
-RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
-
 CMD ["bash"]
