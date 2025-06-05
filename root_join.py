@@ -286,33 +286,17 @@ def self_sim_join(data, c1, c2, k, metric_fn, folder_path, fname):
 
     # Choose the centers
     print("begin get_centers")
-    inicio_gc = time.time()
     length, newData, centers = getCenters(data, c1)
-    fin_gc = time.time()
-    tiempo_ejecucion_gc = fin_gc - inicio_gc
-    print("end get_centers")
 
     os.makedirs(folder_path, exist_ok=True)
 
-    with open(f'{folder_path}/tiempo_gc.csv', mode='a', newline='') as file_gc:
-        writer = csv.writer(file_gc)
-        writer.writerow(['tiempo'])
-        writer.writerow([tiempo_ejecucion_gc])
 
     # Create the groups
     print("begin make_Groups")
-    inicio_mg = time.time()
     groups = makeGroups(length, newData, centers, metric_fn, c2, math.sqrt(n))
     print("begin save_Groups")
     save_pickle_group(groups,f'{folder_path}')
-    fin_mg = time.time()
-    tiempo_ejecucion_mg = fin_mg - inicio_mg
-    
 
-    with open(f'{folder_path}/tiempo_mg.csv', mode='a', newline='') as file_mg:
-        writer = csv.writer(file_mg)
-        writer.writerow(['tiempo'])
-        writer.writerow([tiempo_ejecucion_mg])
     # Create shared objects between processes.
     print("begin self_join")
     args_list = [
@@ -348,21 +332,12 @@ def self_sim_join(data, c1, c2, k, metric_fn, folder_path, fname):
             if os.path.exists(temp_file_1):
                 os.remove(temp_file_1)
 
-    # Save processing times by group.
-    with open(f"{folder_path}/tiempo_g.csv", mode='w', newline='') as file_g:
-        writer = csv.writer(file_g)
-        writer.writerow(['grupo', 'tiempo'])
-        for gid, tiempo in tiempos:
-            writer.writerow([gid, tiempo])
-
 def store_results(dst, algo, dataset, task, D, I, buildtime, querytime, params):
 
     os.makedirs(Path(dst).parent, exist_ok=True)
 
     try:
         if I.shape == D.shape:
-            #print(f"Data type of I: {I.dtype}")
-            #print(f"Data type of D: {D.dtype}")
 
             with h5py.File(dst, 'w') as f:
                 f.attrs['algo'] = algo
