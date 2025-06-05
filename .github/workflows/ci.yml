@@ -16,10 +16,9 @@ jobs:
         with:
           submodules: 'true'
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.12'
+      - name: Use system Python
+        run: python --version
+
 
       - name: Install dependencies
         run: |
