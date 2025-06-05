@@ -12,6 +12,7 @@ jobs:
   test:
     runs-on: ubuntu-latest
     name: Python 3.12 - Ubuntu - x64
+    timeout-minutes: 720
 
     steps:
       - uses: actions/checkout@v3
