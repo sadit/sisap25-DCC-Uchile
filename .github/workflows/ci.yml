@@ -12,7 +12,6 @@ jobs:
   test:
     runs-on: self-hosted
     name: Python 3.12 - Ubuntu - x64
-    timeout-minutes: 720
 
     steps:
       - uses: actions/checkout@v3
