@@ -273,7 +273,7 @@ def save_pickle_group(groups, output_dir):
             # Serialize the tuple.
             pickle.dump((group_id,group_points), grupo_file)
 
-        print(f"Archivo .pkl para el grupo {group_id} guardado en {group_file_path}")
+        print(f".pkl file for group {group_id} saved in {group_file_path}")
 
 
 
