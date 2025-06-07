@@ -11,6 +11,7 @@ on:
 jobs:
   test:
     runs-on: self-hosted
+    timeout-minutes: 4320
     name: Python 3.12 - Ubuntu - x64
 
     steps:
