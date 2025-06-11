@@ -373,7 +373,7 @@ def run(dataset, task, k):
 
     os.makedirs(folder_path, exist_ok=True)
     # Prepare the dataset.
-    prepare(dataset, task)
+    ### prepare(dataset, task)  ### ignoring
 
     # Load the datas.
     fn, _ = get_fn(dataset, task)

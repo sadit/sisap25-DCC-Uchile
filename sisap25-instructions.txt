@@ -1,0 +1,9 @@
+## building
+
+docker build -t sisap25/dcc-uchile . --label sisap25/dcc-uchile
+
+## running
+
+docker run -it --cpus=8 --memory=16g --memory-swap=0g sisap25/dcc-uchile /bin/bash
+
+bash -x sisap25-task2.sh 2>&1 | tee log-task2.txt
